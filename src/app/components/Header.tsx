@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { HeaderLinks } from "../../../constans";
+import Marquee from "react-fast-marquee";
 
 const Header = () => {
   //const [iconState,setIconState]=useState(true);
@@ -21,7 +22,7 @@ const Header = () => {
   return (
     <>
       <div className="">
-        <header className=" sm:bg-yellow-500 md:bg-red-800 lg:bg-blue-600 flex   p-3  items-center justify-between bg-white border last:border-b-2   ">
+        <header className="  lg: flex   p-3  items-center justify-between bg-white border last:border-b-2   ">
           <div
             className="  w-10 h-10 p-2 justify-center items-center gap-2 rounded-md bg-background_colorr cursor-pointer"
             onClick={() => toggleHeader()}
@@ -56,46 +57,30 @@ const Header = () => {
               width={24}
               height={24}
             />
-            <p className="absolute left-4 mb-6 bg-red-600 text-white rounded-3xl w-[18px] h-[18px] flex items-center justify-center text-sm">
+            <p className="absolute left-4 mb-6 bg-red-600 text-white rounded-3xl w-[18px] h-[18px] flex items-center justify-center text-sm md:text-[10px] lg:text-[12px] xl:text-[16px]">
               1
             </p>
           </div>
         </header>
-
-        <div className="flex space-x-[5px] text-[8px]  pt-3 snap-x">
-          <div className="flex space-x-[2px]">
-            <p className="underline w-[55px] h-[12px]">Live BTC Price</p>
-            <Image
-              className=""
-              src="/b.svg"
-              alt="lock"
-              width={12}
-              height={12}
-            />
-            <p className="w-[70px] h-[12px] font-semibold">$24,3802.54 USD</p>
+        <Marquee>
+          <div className="flex space-x-[20px] text-[8px]  pt-3 items-start mx-2">
+            {[0, 1, 2, 3, 4, 5, 6].map((index) => (
+              <div key={index} className="flex space-x-[5px]">
+                <p className="underline w-[55px] h-[12px]">Live BTC Price</p>
+                <Image
+                  className=""
+                  src="/b.svg"
+                  alt="lock"
+                  width={12}
+                  height={12}
+                />
+                <p className="w-[70px] h-[12px] font-semibold">
+                  $24,3802.54 USD
+                </p>
+              </div>
+            ))}
           </div>
-          <div className="flex space-x-[2px]">
-            <p className="underline w-[55px] h-[12px]">Live BTC Price</p>
-            <Image
-              className=""
-              src="/b.svg"
-              alt="lock"
-              width={12}
-              height={12}
-            />
-            <p className="w-[70px] h-[12px] font-semibold">$24,3802.54 USD</p>
-          </div>
-          <div className="flex space-x-[1px]">
-            <p className="underline w-[55px] h-[12px]">Live BTC Price</p>
-            <Image
-              className=""
-              src="/b.svg"
-              alt="lock"
-              width={12}
-              height={12}
-            />
-          </div>
-        </div>
+        </Marquee>
       </div>
       {header && (
         <div className="rounded-md shadow-lg">
@@ -139,7 +124,7 @@ const Header = () => {
           <button
             className={` justify-center mx-2 group flex  border-2 border-black rounded-lg h-[42px] w-[330px] px-4 pt-[10px]
                pb-3 items-center relative bottom-2 font-bold hover:bg-yellow-600 hover:text-white
-                hover:border-none  hover:p-[18px] `}
+                hover:border-none  hover:p-[18px]   `}
           >
             GET ACCESS
             <Image
